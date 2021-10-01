@@ -11,13 +11,12 @@ const Pagination = ({ coinsPerPage, totalCoins, paginate }) => {
       <ul className="pagination ">
         {pageNumbers.map((page) => (
           <li key={page} className="page-item" aria-current="page">
-            <a
+            <span
               onClick={() => paginate(page)}
-              href="!#"
               class="page-link text-dark"
             >
               {page}
-            </a>
+            </span>
           </li>
         ))}
       </ul>
