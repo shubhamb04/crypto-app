@@ -1,14 +1,22 @@
 import React from "react";
+import millify from "millify";
 
-const Coin = (props) => {
-  const coins = props.coins;
+const Coin = ({coins, loading}) => {
+  if (loading) {
+    return (
+      <div class="d-flex align-items-center">
+      <strong>Loading...</strong>
+      <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+    )
+  }
   return (
     <div className="table-responsive">
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Coins</th>
+            <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">24Hrs Change</th>
             <th scope="col">Volume</th>
@@ -17,13 +25,12 @@ const Coin = (props) => {
         <tbody>
           {coins.map((coin, index) => (
             <tr key={index}>
-              <th scope="row">{index}</th>
-              <td className="d-flex align-content-start justify-content-around">
-                <img
+              <th scope="row"><img
                   src={coin.image}
                   alt="coin symbol"
                   className="coin-img"
-                ></img>
+                ></img></th>
+              <td className="d-flex align-content-start justify-content-around">
                 <h6>{coin.name}</h6>
                 <p className="text-uppercase">{coin.symbol}</p>
               </td>
@@ -41,7 +48,7 @@ const Coin = (props) => {
                   </td>
                 )}
               
-              <td>${coin.total_volume.toLocaleString()}</td>
+              <td>${millify(coin.total_volume.toLocaleString())}Bn</td>
             </tr>
           ))}
         </tbody>
