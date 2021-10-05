@@ -1,7 +1,8 @@
 import React from "react";
 import millify from "millify";
 
-const Coin = ({coins, loading}) => {
+const Coin = ({ coins, loading }) => {
+
   if (loading) {
     return (
       <div class="d-flex align-items-center">
@@ -30,8 +31,8 @@ const Coin = ({coins, loading}) => {
                   alt="coin symbol"
                   className="coin-img"
                 ></img></th>
-              <td className="d-flex align-content-start justify-content-around">
-                <h6>{coin.name}</h6>
+              <td className="d-flex justify-content-between">
+                <h6 className="">{coin.name}</h6>
                 <p className="text-uppercase">{coin.symbol}</p>
               </td>
               <td className="text-info">${coin.current_price}</td>
